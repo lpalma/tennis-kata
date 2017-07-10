@@ -13,18 +13,10 @@ public class TennisGame1 implements TennisGame {
     }
 
     public void wonPoint(String playerName) {
-        if (playerName == PLAYER_ONE)
+        if (isPlayerOne(playerName))
             pointForPlayerOne();
         else
             pointForPlayerTwo();
-    }
-
-    private void pointForPlayerTwo() {
-        m_score2 += 1;
-    }
-
-    private void pointForPlayerOne() {
-        m_score1 += 1;
     }
 
     public String getScore() {
@@ -46,7 +38,7 @@ public class TennisGame1 implements TennisGame {
                 default:
                         score = "Deuce";
                     break;
-                
+
             }
         }
         else if (m_score1>=4 || m_score2>=4)
@@ -81,5 +73,17 @@ public class TennisGame1 implements TennisGame {
             }
         }
         return score;
+    }
+
+    private boolean isPlayerOne(String playerName) {
+        return playerName == PLAYER_ONE;
+    }
+
+    private void pointForPlayerTwo() {
+        m_score2 += 1;
+    }
+
+    private void pointForPlayerOne() {
+        m_score1 += 1;
     }
 }
