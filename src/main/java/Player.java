@@ -1,4 +1,5 @@
 public class Player {
+    public static final int FORTY = 4;
     private PlayerName name;
     private Score matchScore;
 
@@ -19,5 +20,17 @@ public class Player {
 
     public Score matchScore() {
         return new Score(matchScore.value());
+    }
+
+    public boolean hasGamePoint() {
+        return matchScore.value() >= FORTY;
+    }
+
+    public int compareAgainst(Player player) {
+        return matchScore().value() - player.matchScore().value();
+    }
+
+    public String name() {
+        return name.value();
     }
 }
