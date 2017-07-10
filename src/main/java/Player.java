@@ -17,7 +17,7 @@ public class Player {
         matchScore = new Score(newScore);
     }
 
-    public int matchScore() {
-        return matchScore.value();
+    public Score matchScore() {
+        return new Score(matchScore.value());
     }
 }
