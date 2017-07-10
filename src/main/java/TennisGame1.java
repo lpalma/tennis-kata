@@ -11,9 +11,9 @@ public class TennisGame1 implements TennisGame {
 
     public void wonPoint(String playerName) {
         if (isPlayerOne(playerName))
-            pointForPlayerOne();
+            playerOne.newPoint();
         else
-            pointForPlayerTwo();
+            playerTwo.newPoint();
     }
 
     public String getScore() {
@@ -98,11 +98,4 @@ public class TennisGame1 implements TennisGame {
         return playerOne.hasName(new PlayerName(playerName));
     }
 
-    private void pointForPlayerTwo() {
-        playerTwo.newPoint();
-    }
-
-    private void pointForPlayerOne() {
-        playerOne.newPoint();
-    }
 }
