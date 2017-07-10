@@ -1,5 +1,12 @@
 
 public class Scoreboard {
+    public static final int LOVE = 0;
+    public static final int FIFTEEN = 1;
+    public static final int THIRTY = 2;
+    public static final String LOVE_ALL = "Love-All";
+    public static final String FIFTEEN_ALL = "Fifteen-All";
+    public static final String THIRTY_ALL = "Thirty-All";
+    public static final String DEUCE = "Deuce";
     private Player playerOne;
     private Player playerTwo;
 
@@ -61,25 +68,21 @@ public class Scoreboard {
     }
 
     private String formatDrawScore() {
-        String score;
+        int score = playerOne.matchScore();
 
-        switch (playerOne.matchScore())
-        {
-            case 0:
-                score = "Love-All";
-                break;
-            case 1:
-                score = "Fifteen-All";
-                break;
-            case 2:
-                score = "Thirty-All";
-                break;
-            default:
-                score = "Deuce";
-                break;
+        if (score == LOVE) {
+            return LOVE_ALL;
         }
 
-        return score;
+        if (score == FIFTEEN) {
+            return FIFTEEN_ALL;
+        }
+
+        if (score == THIRTY) {
+            return THIRTY_ALL;
+        }
+
+        return DEUCE;
     }
 
     private boolean isDraw() {
