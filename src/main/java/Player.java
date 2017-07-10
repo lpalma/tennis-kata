@@ -1,9 +1,10 @@
 public class Player {
     private PlayerName name;
-    private int matchScore = 0;
+    private Score matchScore;
 
-    public Player(PlayerName name) {
+    public Player(PlayerName name, Score initialScore) {
         this.name = name;
+        matchScore = initialScore;
     }
 
     public boolean hasName(PlayerName playerName) {
@@ -11,10 +12,12 @@ public class Player {
     }
 
     public void newPoint() {
-        ++matchScore;
+        int newScore = matchScore.value() + 1;
+
+        matchScore = new Score(newScore);
     }
 
     public int matchScore() {
-        return matchScore;
+        return matchScore.value();
     }
 }

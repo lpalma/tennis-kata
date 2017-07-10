@@ -1,12 +1,13 @@
 
 public class TennisGame1 implements TennisGame {
 
+    public static final int INITIAL_SCORE = 0;
     private Player playerOne;
     private Player playerTwo;
 
     public TennisGame1(String playerOneName, String playerTwoName) {
-        playerOne = new Player(new PlayerName(playerOneName));
-        playerTwo = new Player(new PlayerName(playerTwoName));
+        playerOne = new Player(new PlayerName(playerOneName), new Score(INITIAL_SCORE));
+        playerTwo = new Player(new PlayerName(playerTwoName), new Score(INITIAL_SCORE));
     }
 
     public void wonPoint(String playerName) {
