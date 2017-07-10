@@ -4,6 +4,9 @@ public class Scoreboard {
     public static final String FIFTEEN_ALL = "Fifteen-All";
     public static final String THIRTY_ALL = "Thirty-All";
     public static final String DEUCE = "Deuce";
+    public static final int ADVANTAGE_PLAYER_ONE = 1;
+    public static final int ADVANTAGE_PLAYER_TWO = -1;
+    public static final int WIN_PLAYER_ONE = 2;
     private Player playerOne;
     private Player playerTwo;
 
@@ -18,7 +21,7 @@ public class Scoreboard {
         }
 
         if (anyPlayerScoredFour()) {
-            return formatAdvantageOrWinScore();
+            return formatAdvantageOrWinScore().print();
         }
 
         return formatPlayersScore();
@@ -50,18 +53,26 @@ public class Scoreboard {
         return score;
     }
 
-    private String formatAdvantageOrWinScore() {
-        String score;
-        int minusResult = playerOne.matchScore().value() - playerTwo.matchScore().value();
-        if (minusResult==1) score ="Advantage player1";
-        else if (minusResult ==-1) score ="Advantage player2";
-        else if (minusResult>=2) score = "Win for player1";
-        else score ="Win for player2";
-        return score;
+    private ResultBoard formatAdvantageOrWinScore() {
+        int scoreDifference = playerOne.compareAgainst(playerTwo);
+
+        if (scoreDifference == ADVANTAGE_PLAYER_ONE) {
+            return new AdvantageBoard(playerOne);
+        }
+
+        if (scoreDifference == ADVANTAGE_PLAYER_TWO) {
+            return new AdvantageBoard(playerTwo);
+        }
+
+        if (scoreDifference >= WIN_PLAYER_ONE) {
+            return new WinBoard(playerOne);
+        }
+
+        return new WinBoard(playerTwo);
     }
 
     private boolean anyPlayerScoredFour() {
-        return playerOne.matchScore().value() >=4 || playerTwo.matchScore().value() >=4;
+        return playerOne.hasGamePoint() || playerTwo.hasGamePoint();
     }
 
     private String formatDrawScore() {
@@ -83,6 +94,7 @@ public class Scoreboard {
     }
 
     private boolean isDraw() {
-        return playerOne.matchScore().value() == playerTwo.matchScore().value();
+        return playerOne.matchScore()
+                .equals(playerTwo.matchScore());
     }
 }

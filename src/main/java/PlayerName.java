@@ -15,6 +15,10 @@ public class PlayerName {
         return name.equals(that.name);
     }
 
+    public String value() {
+        return name;
+    }
+
     @Override
     public int hashCode() {
         return name.hashCode();
