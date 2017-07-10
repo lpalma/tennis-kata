@@ -14,9 +14,17 @@ public class TennisGame1 implements TennisGame {
 
     public void wonPoint(String playerName) {
         if (playerName == PLAYER_ONE)
-            m_score1 += 1;
+            pointForPlayerOne();
         else
-            m_score2 += 1;
+            pointForPlayerTwo();
+    }
+
+    private void pointForPlayerTwo() {
+        m_score2 += 1;
+    }
+
+    private void pointForPlayerOne() {
+        m_score1 += 1;
     }
 
     public String getScore() {
