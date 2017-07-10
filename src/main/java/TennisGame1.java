@@ -2,10 +2,14 @@
 public class TennisGame1 implements TennisGame {
 
     public static final String PLAYER_ONE = "player1";
+    private Player playerOne;
+    private Player playerTwo;
     private int playerOneMatchScore = 0;
     private int playerTwoMatchScore = 0;
 
     public TennisGame1(String playerOneName, String playerTwoName) {
+        playerOne = new Player(playerOneName);
+        playerTwo = new Player(playerTwoName);
     }
 
     public void wonPoint(String playerName) {
