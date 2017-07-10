@@ -2,10 +2,10 @@
 public class TennisGame1 implements TennisGame {
 
     public static final String PLAYER_ONE = "player1";
-    private int m_score1 = 0;
-    private int m_score2 = 0;
+    private int playerOneMatchScore = 0;
+    private int playerTwoMatchScore = 0;
 
-    public TennisGame1(String player1Name, String player2Name) {
+    public TennisGame1(String playerOneName, String playerTwoName) {
     }
 
     public void wonPoint(String playerName) {
@@ -32,8 +32,8 @@ public class TennisGame1 implements TennisGame {
         int tempScore;
         for (int i = 1; i<3; i++)
         {
-            if (i==1) tempScore = m_score1;
-            else { score+="-"; tempScore = m_score2;}
+            if (i==1) tempScore = playerOneMatchScore;
+            else { score+="-"; tempScore = playerTwoMatchScore;}
             switch(tempScore)
             {
                 case 0:
@@ -55,7 +55,7 @@ public class TennisGame1 implements TennisGame {
 
     private String formatAdvantageOrWinScore() {
         String score;
-        int minusResult = m_score1-m_score2;
+        int minusResult = playerOneMatchScore - playerTwoMatchScore;
         if (minusResult==1) score ="Advantage player1";
         else if (minusResult ==-1) score ="Advantage player2";
         else if (minusResult>=2) score = "Win for player1";
@@ -64,13 +64,13 @@ public class TennisGame1 implements TennisGame {
     }
 
     private boolean anyPlayerScoredFour() {
-        return m_score1>=4 || m_score2>=4;
+        return playerOneMatchScore >=4 || playerTwoMatchScore >=4;
     }
 
     private String formatDrawScore() {
         String score;
 
-        switch (m_score1)
+        switch (playerOneMatchScore)
         {
             case 0:
                     score = "Love-All";
@@ -90,7 +90,7 @@ public class TennisGame1 implements TennisGame {
     }
 
     private boolean isDraw() {
-        return m_score1==m_score2;
+        return playerOneMatchScore == playerTwoMatchScore;
     }
 
     private boolean isPlayerOne(String playerName) {
@@ -98,10 +98,10 @@ public class TennisGame1 implements TennisGame {
     }
 
     private void pointForPlayerTwo() {
-        m_score2 += 1;
+        playerTwoMatchScore += 1;
     }
 
     private void pointForPlayerOne() {
-        m_score1 += 1;
+        playerOneMatchScore += 1;
     }
 }
