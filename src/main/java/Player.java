@@ -1,8 +1,8 @@
 public class Player {
-    private String name;
+    private PlayerName name;
     private int matchScore = 0;
 
-    public Player(String name) {
+    public Player(PlayerName name) {
         this.name = name;
     }
 }

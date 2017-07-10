@@ -8,8 +8,8 @@ public class TennisGame1 implements TennisGame {
     private int playerTwoMatchScore = 0;
 
     public TennisGame1(String playerOneName, String playerTwoName) {
-        playerOne = new Player(playerOneName);
-        playerTwo = new Player(playerTwoName);
+        playerOne = new Player(new PlayerName(playerOneName));
+        playerTwo = new Player(new PlayerName(playerTwoName));
     }
 
     public void wonPoint(String playerName) {
