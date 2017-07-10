@@ -10,10 +10,7 @@ public class TennisGame1 implements TennisGame {
     }
 
     public void wonPoint(String playerName) {
-        if (isPlayerOne(playerName))
-            playerOne.newPoint();
-        else
-            playerTwo.newPoint();
+        getPlayer(playerName).newPoint();
     }
 
     public String getScore() {
@@ -26,6 +23,16 @@ public class TennisGame1 implements TennisGame {
         }
 
         return formatPlayersScore();
+    }
+
+    private Player getPlayer(String playerName) {
+        PlayerName name = new PlayerName(playerName);
+
+        if (playerOne.hasName(name)) {
+            return playerOne;
+        }
+
+        return playerTwo;
     }
 
     private String formatPlayersScore() {
@@ -93,9 +100,4 @@ public class TennisGame1 implements TennisGame {
     private boolean isDraw() {
         return playerOne.matchScore() == playerTwo.matchScore();
     }
-
-    private boolean isPlayerOne(String playerName) {
-        return playerOne.hasName(new PlayerName(playerName));
-    }
-
 }
