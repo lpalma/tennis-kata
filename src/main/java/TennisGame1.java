@@ -1,7 +1,6 @@
 
 public class TennisGame1 implements TennisGame {
 
-    public static final String PLAYER_ONE = "player1";
     private Player playerOne;
     private Player playerTwo;
     private int playerOneMatchScore = 0;
@@ -98,7 +97,7 @@ public class TennisGame1 implements TennisGame {
     }
 
     private boolean isPlayerOne(String playerName) {
-        return playerName == PLAYER_ONE;
+        return playerOne.hasName(new PlayerName(playerName));
     }
 
     private void pointForPlayerTwo() {

@@ -5,4 +5,8 @@ public class Player {
     public Player(PlayerName name) {
         this.name = name;
     }
+
+    public boolean hasName(PlayerName playerName) {
+        return name.equals(playerName);
+    }
 }
