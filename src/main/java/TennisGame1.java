@@ -16,9 +16,6 @@ public class TennisGame1 implements TennisGame {
     }
 
     public String getScore() {
-        String score = "";
-        int tempScore=0;
-
         if (isDraw()) {
             return formatDrawScore();
         }
@@ -26,8 +23,14 @@ public class TennisGame1 implements TennisGame {
         if (anyPlayerScoredFour()) {
             return formatAdvantageOrWinScore();
         }
-        
-        for (int i=1; i<3; i++)
+
+        return formatPlayersScore();
+    }
+
+    private String formatPlayersScore() {
+        String score = "";
+        int tempScore;
+        for (int i = 1; i<3; i++)
         {
             if (i==1) tempScore = m_score1;
             else { score+="-"; tempScore = m_score2;}
