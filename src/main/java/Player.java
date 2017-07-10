@@ -9,4 +9,12 @@ public class Player {
     public boolean hasName(PlayerName playerName) {
         return name.equals(playerName);
     }
+
+    public void newPoint() {
+        ++matchScore;
+    }
+
+    public int matchScore() {
+        return matchScore;
+    }
 }

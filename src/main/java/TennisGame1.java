@@ -3,8 +3,6 @@ public class TennisGame1 implements TennisGame {
 
     private Player playerOne;
     private Player playerTwo;
-    private int playerOneMatchScore = 0;
-    private int playerTwoMatchScore = 0;
 
     public TennisGame1(String playerOneName, String playerTwoName) {
         playerOne = new Player(new PlayerName(playerOneName));
@@ -35,8 +33,8 @@ public class TennisGame1 implements TennisGame {
         int tempScore;
         for (int i = 1; i<3; i++)
         {
-            if (i==1) tempScore = playerOneMatchScore;
-            else { score+="-"; tempScore = playerTwoMatchScore;}
+            if (i==1) tempScore = playerOne.matchScore();
+            else { score+="-"; tempScore = playerTwo.matchScore();}
             switch(tempScore)
             {
                 case 0:
@@ -58,7 +56,7 @@ public class TennisGame1 implements TennisGame {
 
     private String formatAdvantageOrWinScore() {
         String score;
-        int minusResult = playerOneMatchScore - playerTwoMatchScore;
+        int minusResult = playerOne.matchScore() - playerTwo.matchScore();
         if (minusResult==1) score ="Advantage player1";
         else if (minusResult ==-1) score ="Advantage player2";
         else if (minusResult>=2) score = "Win for player1";
@@ -67,13 +65,13 @@ public class TennisGame1 implements TennisGame {
     }
 
     private boolean anyPlayerScoredFour() {
-        return playerOneMatchScore >=4 || playerTwoMatchScore >=4;
+        return playerOne.matchScore() >=4 || playerTwo.matchScore() >=4;
     }
 
     private String formatDrawScore() {
         String score;
 
-        switch (playerOneMatchScore)
+        switch (playerOne.matchScore())
         {
             case 0:
                     score = "Love-All";
@@ -93,7 +91,7 @@ public class TennisGame1 implements TennisGame {
     }
 
     private boolean isDraw() {
-        return playerOneMatchScore == playerTwoMatchScore;
+        return playerOne.matchScore() == playerTwo.matchScore();
     }
 
     private boolean isPlayerOne(String playerName) {
@@ -101,10 +99,10 @@ public class TennisGame1 implements TennisGame {
     }
 
     private void pointForPlayerTwo() {
-        playerTwoMatchScore += 1;
+        playerTwo.newPoint();
     }
 
     private void pointForPlayerOne() {
-        playerOneMatchScore += 1;
+        playerOne.newPoint();
     }
 }
