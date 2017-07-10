@@ -1,12 +1,9 @@
 
 public class Scoreboard {
-    public static final String LOVE_ALL = "Love-All";
-    public static final String FIFTEEN_ALL = "Fifteen-All";
-    public static final String THIRTY_ALL = "Thirty-All";
-    public static final String DEUCE = "Deuce";
     public static final int ADVANTAGE_PLAYER_ONE = 1;
     public static final int ADVANTAGE_PLAYER_TWO = -1;
     public static final int WIN_PLAYER_ONE = 2;
+    public static final int DRAW = 0;
     private Player playerOne;
     private Player playerTwo;
 
@@ -16,12 +13,8 @@ public class Scoreboard {
     }
 
     public String printScore() {
-        if (isDraw()) {
-            return formatDrawScore();
-        }
-
-        if (anyPlayerScoredFour()) {
-            return formatAdvantageOrWinScore().print();
+        if (isDraw() || anyPlayerScoredFour()) {
+            return resultBoard().print();
         }
 
         return formatPlayersScore();
@@ -53,8 +46,12 @@ public class Scoreboard {
         return score;
     }
 
-    private ResultBoard formatAdvantageOrWinScore() {
+    private ResultBoard resultBoard() {
         int scoreDifference = playerOne.compareAgainst(playerTwo);
+
+        if (scoreDifference == DRAW) {
+            return new DrawBoard(playerOne);
+        }
 
         if (scoreDifference == ADVANTAGE_PLAYER_ONE) {
             return new AdvantageBoard(playerOne);
@@ -73,24 +70,6 @@ public class Scoreboard {
 
     private boolean anyPlayerScoredFour() {
         return playerOne.hasGamePoint() || playerTwo.hasGamePoint();
-    }
-
-    private String formatDrawScore() {
-        Score score = playerOne.matchScore();
-
-        if (score.isLove()) {
-            return LOVE_ALL;
-        }
-
-        if (score.isFifteen()) {
-            return FIFTEEN_ALL;
-        }
-
-        if (score.isThirty()) {
-            return THIRTY_ALL;
-        }
-
-        return DEUCE;
     }
 
     private boolean isDraw() {
