@@ -33,4 +33,6 @@ public class Player {
     public String name() {
         return name.value();
     }
+
+    public String printScore() { return matchScore.print(); }
 }

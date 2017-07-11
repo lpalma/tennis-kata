@@ -21,26 +21,7 @@ public class Scoreboard {
     }
 
     private String formatPlayersScore() {
-        String playerOneScore = formatScore(playerOne.matchScore());
-        String playerTwoScore = formatScore(playerTwo.matchScore());
-
-        return playerOneScore + "-" + playerTwoScore;
-    }
-
-    private String formatScore(Score playerScore) {
-        if (playerScore.isLove()) {
-            return "Love";
-        }
-
-        if (playerScore.isFifteen()) {
-            return "Fifteen";
-        }
-
-        if (playerScore.isThirty()) {
-            return "Thirty";
-        }
-
-        return "Forty";
+        return playerOne.printScore() + "-" + playerTwo.printScore();
     }
 
     private ResultBoard resultBoard() {
