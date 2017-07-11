@@ -21,29 +21,26 @@ public class Scoreboard {
     }
 
     private String formatPlayersScore() {
-        String score = "";
-        int tempScore;
-        for (int i = 1; i<3; i++)
-        {
-            if (i==1) tempScore = playerOne.matchScore().value();
-            else { score+="-"; tempScore = playerTwo.matchScore().value();}
-            switch(tempScore)
-            {
-                case 0:
-                    score+="Love";
-                    break;
-                case 1:
-                    score+="Fifteen";
-                    break;
-                case 2:
-                    score+="Thirty";
-                    break;
-                case 3:
-                    score+="Forty";
-                    break;
-            }
+        String playerOneScore = formatScore(playerOne.matchScore());
+        String playerTwoScore = formatScore(playerTwo.matchScore());
+
+        return playerOneScore + "-" + playerTwoScore;
+    }
+
+    private String formatScore(Score playerScore) {
+        if (playerScore.isLove()) {
+            return "Love";
         }
-        return score;
+
+        if (playerScore.isFifteen()) {
+            return "Fifteen";
+        }
+
+        if (playerScore.isThirty()) {
+            return "Thirty";
+        }
+
+        return "Forty";
     }
 
     private ResultBoard resultBoard() {
