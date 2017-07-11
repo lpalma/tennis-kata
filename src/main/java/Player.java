@@ -1,5 +1,4 @@
 public class Player {
-    public static final int FORTY = 4;
     private PlayerName name;
     private Score matchScore;
 
@@ -23,7 +22,7 @@ public class Player {
     }
 
     public boolean hasGamePoint() {
-        return matchScore.value() >= FORTY;
+        return matchScore.isGame();
     }
 
     public ScoreDifference compareAgainst(Player player) {

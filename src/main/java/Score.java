@@ -35,7 +35,7 @@ public class Score {
     }
 
     public boolean isGame() {
-        return value() == GAME;
+        return value() >= GAME;
     }
 
     public String print() {
