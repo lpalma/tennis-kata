@@ -9,15 +9,7 @@ public class Scoreboard {
     }
 
     public String printScore() {
-        if (isDraw() || anyPlayerScoredFour()) {
-            return resultBoard().print();
-        }
-
-        return formatPlayersScore();
-    }
-
-    private String formatPlayersScore() {
-        return playerOne.printScore() + "-" + playerTwo.printScore();
+        return resultBoard().print();
     }
 
     private ResultBoard resultBoard() {
@@ -27,6 +19,14 @@ public class Scoreboard {
             return new DrawBoard(playerOne);
         }
 
+        if (anyPlayerHasGamePoint()) {
+            return resultForGamePoint(scoreDifference);
+        }
+
+        return new RegularBoard(playerOne, playerTwo);
+    }
+
+    private ResultBoard resultForGamePoint(ScoreDifference scoreDifference) {
         if (scoreDifference.isInAdvantage()) {
             return new AdvantageBoard(playerOne);
         }
@@ -42,12 +42,7 @@ public class Scoreboard {
         return new WinBoard(playerTwo);
     }
 
-    private boolean anyPlayerScoredFour() {
+    private boolean anyPlayerHasGamePoint() {
         return playerOne.hasGamePoint() || playerTwo.hasGamePoint();
-    }
-
-    private boolean isDraw() {
-        return playerOne.matchScore()
-                .equals(playerTwo.matchScore());
     }
 }
