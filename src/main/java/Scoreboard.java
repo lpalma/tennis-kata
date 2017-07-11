@@ -8,8 +8,8 @@ public class Scoreboard {
         this.playerTwo = playerTwo;
     }
 
-    public String printScore() {
-        return resultBoard().print();
+    public ResultBoard getResultBoard() {
+        return resultBoard();
     }
 
     private ResultBoard resultBoard() {

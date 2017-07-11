@@ -15,9 +15,15 @@ public class TennisGame1 implements TennisGame {
     }
 
     public String getScore() {
+        ResultBoard resultBoard = resultBoard();
+
+        return resultBoard.print();
+    }
+
+    private ResultBoard resultBoard() {
         Scoreboard scoreboard = new Scoreboard(playerOne, playerTwo);
 
-        return scoreboard.printScore();
+        return scoreboard.getResultBoard();
     }
 
     private Player getPlayer(String playerName) {
