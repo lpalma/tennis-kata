@@ -3,11 +3,11 @@ public class Score {
     public static final int FIFTEEN = 1;
     public static final int THIRTY = 2;
     public static final int FORTY = 3;
+    public static final int GAME = 4;
     public static final String LOVE_TEXT = "Love";
     public static final String FIFTEEN_TEXT = "Fifteen";
     public static final String THIRTY_TEXT = "Thirty";
     public static final String FORTY_TEXT = "Forty";
-    public static final int GAME = 4;
     private int value;
 
     public Score(int value) {

@@ -26,8 +26,10 @@ public class Player {
         return matchScore.value() >= FORTY;
     }
 
-    public int compareAgainst(Player player) {
-        return matchScore().value() - player.matchScore().value();
+    public ScoreDifference compareAgainst(Player player) {
+        int difference = matchScore().value() - player.matchScore().value();
+
+        return new ScoreDifference(difference);
     }
 
     public String name() {

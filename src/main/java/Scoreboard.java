@@ -1,9 +1,5 @@
 
 public class Scoreboard {
-    public static final int ADVANTAGE_PLAYER_ONE = 1;
-    public static final int ADVANTAGE_PLAYER_TWO = -1;
-    public static final int WIN_PLAYER_ONE = 2;
-    public static final int DRAW = 0;
     private Player playerOne;
     private Player playerTwo;
 
@@ -25,21 +21,21 @@ public class Scoreboard {
     }
 
     private ResultBoard resultBoard() {
-        int scoreDifference = playerOne.compareAgainst(playerTwo);
+        ScoreDifference scoreDifference = playerOne.compareAgainst(playerTwo);
 
-        if (scoreDifference == DRAW) {
+        if (scoreDifference.isDraw()) {
             return new DrawBoard(playerOne);
         }
 
-        if (scoreDifference == ADVANTAGE_PLAYER_ONE) {
+        if (scoreDifference.isInAdvantage()) {
             return new AdvantageBoard(playerOne);
         }
 
-        if (scoreDifference == ADVANTAGE_PLAYER_TWO) {
+        if (scoreDifference.isInDisadvantage()) {
             return new AdvantageBoard(playerTwo);
         }
 
-        if (scoreDifference >= WIN_PLAYER_ONE) {
+        if (scoreDifference.isWin()) {
             return new WinBoard(playerOne);
         }
 
