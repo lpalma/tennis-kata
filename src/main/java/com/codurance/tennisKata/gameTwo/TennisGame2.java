@@ -28,15 +28,7 @@ public class TennisGame2 implements TennisGame
         }
 
         if (P2point > 0 && P1point==0) {
-            if (P2point==1)
-                P2res = "Fifteen";
-            if (P2point==2)
-                P2res = "Thirty";
-            if (P2point==3)
-                P2res = "Forty";
-            
-            P1res = "Love";
-            score = P1res + "-" + P2res;
+            score = getScoreWhenPlayerOneHasLovePoint();
         }
         
         if (P1point>P2point && P1point < 4) {
@@ -79,6 +71,20 @@ public class TennisGame2 implements TennisGame
             score = "Win for player2";
         }
 
+        return score;
+    }
+
+    private String getScoreWhenPlayerOneHasLovePoint() {
+        String score;
+        if (P2point==1)
+            P2res = "Fifteen";
+        if (P2point==2)
+            P2res = "Thirty";
+        if (P2point==3)
+            P2res = "Forty";
+
+        P1res = "Love";
+        score = P1res + "-" + P2res;
         return score;
     }
 
