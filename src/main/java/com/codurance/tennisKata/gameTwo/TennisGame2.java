@@ -1,4 +1,4 @@
-package com.codurance.tennisKata;
+package com.codurance.tennisKata.gameTwo;
 
 import com.codurance.tennisKata.TennisGame;
 

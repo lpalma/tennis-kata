@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import com.codurance.tennisKata.gameOne.TennisGame1;
+import com.codurance.tennisKata.gameTwo.TennisGame2;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
