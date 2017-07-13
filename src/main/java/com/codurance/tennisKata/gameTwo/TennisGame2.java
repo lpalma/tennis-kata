@@ -19,48 +19,43 @@ public class TennisGame2 implements TennisGame
     }
 
     public String getScore(){
-        String score = "";
-        if (gameIsDrawn() && P1point < 4) {
-            score = getDrawnScore();
-        }
-
-        if (gameIsDrawn() && P1point>=3) {
-            score = DEUCE;
-        }
-        
-        if (P1point > 0 && P2point==0) {
-            score = getScoreWhenPlayerTwoHasLovePoint();
-        }
-
-        if (P2point > 0 && P1point==0) {
-            score = getScoreWhenPlayerOneHasLovePoint();
-        }
-        
-        if (P1point>P2point && P1point < 4) {
-            score = getScoreWhenPlayerOneIsAheadWithLessThanFortyPoints();
-        }
-
-        if (P2point>P1point && P2point < 4) {
-            score = getScoreWhenPlayerTwoIsHeadWithLessThanFortyPoints();
-        }
-        
-        if (P1point > P2point && P2point >= 3) {
-            score = ADVANTAGE_PLAYER1;
-        }
-        
-        if (P2point > P1point && P1point >= 3) {
-            score = ADVANTAGE_PLAYER2;
-        }
-        
         if (P1point>=4 && P2point>=0 && (P1point-P2point)>=2) {
-            score = WIN_FOR_PLAYER1;
+            return WIN_FOR_PLAYER1;
         }
 
         if (P2point>=4 && P1point>=0 && (P2point-P1point)>=2) {
-            score = WIN_FOR_PLAYER2;
+            return WIN_FOR_PLAYER2;
         }
 
-        return score;
+        if (P1point > P2point && P2point >= 3) {
+            return ADVANTAGE_PLAYER1;
+        }
+
+        if (P2point > P1point && P1point >= 3) {
+            return ADVANTAGE_PLAYER2;
+        }
+
+        if (gameIsDrawn() && P1point>=3) {
+            return DEUCE;
+        }
+
+        if (gameIsDrawn() && P1point < 4) {
+            return getDrawnScore();
+        }
+
+        if (P1point > 0 && P2point==0) {
+            return getScoreWhenPlayerTwoHasLovePoint();
+        }
+
+        if (P2point > 0 && P1point==0) {
+            return getScoreWhenPlayerOneHasLovePoint();
+        }
+
+        if (P1point>P2point && P1point < 4) {
+            return getScoreWhenPlayerOneIsAheadWithLessThanFortyPoints();
+        }
+
+        return getScoreWhenPlayerTwoIsHeadWithLessThanFortyPoints();
     }
 
     public void P1Score() {
