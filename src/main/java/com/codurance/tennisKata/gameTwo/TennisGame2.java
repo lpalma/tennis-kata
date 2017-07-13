@@ -36,15 +36,7 @@ public class TennisGame2 implements TennisGame
         }
 
         if (P2point>P1point && P2point < 4) {
-            if (P2point==2)
-                P2res="Thirty";
-            if (P2point==3)
-                P2res="Forty";
-            if (P1point==1)
-                P1res="Fifteen";
-            if (P1point==2)
-                P1res="Thirty";
-            score = P1res + "-" + P2res;
+            score = getScoreWhenPlayerTwoIsHeadWithLessThanFortyPoints();
         }
         
         if (P1point > P2point && P2point >= 3) {
@@ -63,6 +55,35 @@ public class TennisGame2 implements TennisGame
             score = "Win for player2";
         }
 
+        return score;
+    }
+
+    public void P1Score() {
+        P1point++;
+    }
+
+    public void P2Score(){
+        P2point++;
+    }
+
+    public void wonPoint(String player) {
+        if (player == "player1")
+            P1Score();
+        else
+            P2Score();
+    }
+
+    private String getScoreWhenPlayerTwoIsHeadWithLessThanFortyPoints() {
+        String score;
+        if (P2point==2)
+            P2res="Thirty";
+        if (P2point==3)
+            P2res="Forty";
+        if (P1point==1)
+            P1res="Fifteen";
+        if (P1point==2)
+            P1res="Thirty";
+        score = P1res + "-" + P2res;
         return score;
     }
 
@@ -118,21 +139,6 @@ public class TennisGame2 implements TennisGame
             score = "Thirty";
         score += "-All";
         return score;
-    }
-
-    public void P1Score(){
-        P1point++;
-    }
-
-    public void P2Score(){
-        P2point++;
-    }
-
-    public void wonPoint(String player) {
-        if (player == "player1")
-            P1Score();
-        else
-            P2Score();
     }
 
     private boolean gameIsDrawn() {
