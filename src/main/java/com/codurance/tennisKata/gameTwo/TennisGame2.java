@@ -4,6 +4,11 @@ import com.codurance.tennisKata.TennisGame;
 
 public class TennisGame2 implements TennisGame
 {
+    public static final String DEUCE = "Deuce";
+    public static final String ADVANTAGE_PLAYER1 = "Advantage player1";
+    public static final String ADVANTAGE_PLAYER2 = "Advantage player2";
+    public static final String WIN_FOR_PLAYER1 = "Win for player1";
+    public static final String WIN_FOR_PLAYER2 = "Win for player2";
     public int P1point = 0;
     public int P2point = 0;
     
@@ -20,7 +25,7 @@ public class TennisGame2 implements TennisGame
         }
 
         if (gameIsDrawn() && P1point>=3) {
-            score = "Deuce";
+            score = DEUCE;
         }
         
         if (P1point > 0 && P2point==0) {
@@ -40,19 +45,19 @@ public class TennisGame2 implements TennisGame
         }
         
         if (P1point > P2point && P2point >= 3) {
-            score = "Advantage player1";
+            score = ADVANTAGE_PLAYER1;
         }
         
         if (P2point > P1point && P1point >= 3) {
-            score = "Advantage player2";
+            score = ADVANTAGE_PLAYER2;
         }
         
         if (P1point>=4 && P2point>=0 && (P1point-P2point)>=2) {
-            score = "Win for player1";
+            score = WIN_FOR_PLAYER1;
         }
 
         if (P2point>=4 && P1point>=0 && (P2point-P1point)>=2) {
-            score = "Win for player2";
+            score = WIN_FOR_PLAYER2;
         }
 
         return score;
