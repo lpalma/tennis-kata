@@ -24,7 +24,7 @@ public class TennisGame2 implements TennisGame
         }
         
         if (P1point > 0 && P2point==0) {
-            score = getRegularScore();
+            score = getScoreWhenPlayerTwoHasLovePoint();
         }
 
         if (P2point > 0 && P1point==0) {
@@ -88,7 +88,7 @@ public class TennisGame2 implements TennisGame
         return score;
     }
 
-    private String getRegularScore() {
+    private String getScoreWhenPlayerTwoHasLovePoint() {
         String score;
         if (P1point==1)
             P1res = "Fifteen";
