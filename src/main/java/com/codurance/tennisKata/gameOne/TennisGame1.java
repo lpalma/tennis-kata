@@ -1,3 +1,11 @@
+package com.codurance.tennisKata.gameOne;
+
+import com.codurance.tennisKata.TennisGame;
+import com.codurance.tennisKata.gameOne.player.Player;
+import com.codurance.tennisKata.gameOne.player.PlayerName;
+import com.codurance.tennisKata.gameOne.resultBoard.ResultBoard;
+import com.codurance.tennisKata.gameOne.score.Score;
+import com.codurance.tennisKata.gameOne.score.Scoreboard;
 
 public class TennisGame1 implements TennisGame {
 

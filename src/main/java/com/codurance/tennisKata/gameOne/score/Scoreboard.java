@@ -1,3 +1,7 @@
+package com.codurance.tennisKata.gameOne.score;
+
+import com.codurance.tennisKata.gameOne.player.Player;
+import com.codurance.tennisKata.gameOne.resultBoard.*;
 
 public class Scoreboard {
     private Player playerOne;

@@ -1,3 +1,6 @@
+package com.codurance.tennisKata;
+
+import com.codurance.tennisKata.TennisGame;
 
 public class TennisGame2 implements TennisGame
 {

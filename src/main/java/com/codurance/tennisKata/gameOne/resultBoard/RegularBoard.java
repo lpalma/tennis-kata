@@ -1,3 +1,7 @@
+package com.codurance.tennisKata.gameOne.resultBoard;
+
+import com.codurance.tennisKata.gameOne.player.Player;
+
 public class RegularBoard implements ResultBoard {
     private Player playerOne;
     private Player playerTwo;

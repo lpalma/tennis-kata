@@ -1,9 +1,11 @@
+package com.codurance.tennisKata;
+
 import static org.junit.Assert.*;
 
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.junit.Before;
+import com.codurance.tennisKata.gameOne.TennisGame1;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;

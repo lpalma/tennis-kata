@@ -1,3 +1,8 @@
+package com.codurance.tennisKata.gameOne.resultBoard;
+
+import com.codurance.tennisKata.gameOne.player.Player;
+import com.codurance.tennisKata.gameOne.score.Score;
+
 public class DrawBoard implements ResultBoard {
     public static final String DEUCE = "Deuce";
     public static final String ALL = "All";

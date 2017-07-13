@@ -1,3 +1,8 @@
+package com.codurance.tennisKata.gameOne.player;
+
+import com.codurance.tennisKata.gameOne.score.Score;
+import com.codurance.tennisKata.gameOne.score.ScoreDifference;
+
 public class Player {
     private PlayerName name;
     private Score matchScore;

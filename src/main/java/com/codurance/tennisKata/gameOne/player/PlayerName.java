@@ -1,3 +1,5 @@
+package com.codurance.tennisKata.gameOne.player;
+
 public class PlayerName {
     private String name;
 

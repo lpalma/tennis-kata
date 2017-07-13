@@ -1,3 +1,5 @@
+package com.codurance.tennisKata.gameOne.score;
+
 public class Score {
     public static final int LOVE = 0;
     public static final int FIFTEEN = 1;

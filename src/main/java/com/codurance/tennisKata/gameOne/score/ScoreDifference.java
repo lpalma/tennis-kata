@@ -1,3 +1,5 @@
+package com.codurance.tennisKata.gameOne.score;
+
 public class ScoreDifference {
     public static final int IN_ADVANTAGE = 1;
     public static final int IN_DISADVANTAGE = -1;
