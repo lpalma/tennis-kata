@@ -20,15 +20,19 @@ public class TennisGame1 implements TennisGame {
         if (isEvenScore()) {
             return evenScore();
         }
+
         if (isRunningScore()) {
             return runningScore();
         }
+
         if (playerOneHasAdvantage()) {
             return ADVANTAGE_FOR + " " + PLAYER_ONE;
         }
+
         if (playerTwoHasAdvantage()) {
             return ADVANTAGE_FOR + " " + PLAYER_TWO;
         }
+
         return finalScore();
     }
 
