@@ -14,21 +14,7 @@ public class TennisGame1 implements TennisGame {
     public String getScore() {
         String score;
         if (playerOneScore == playerTwoScore) {
-            switch (playerOneScore) {
-                case 0:
-                    score = "Love-All";
-                    break;
-                case 1:
-                    score = "Fifteen-All";
-                    break;
-                case 2:
-                    score = "Thirty-All";
-                    break;
-                default:
-                    score = "Deuce";
-                    break;
-
-            }
+            score = evenScore();
         } else if (playerOneScore >= 4 || playerTwoScore >= 4) {
             int playerOneAdvantage = playerOneScore - playerTwoScore;
             if (playerOneAdvantage == 1) {
@@ -41,6 +27,27 @@ public class TennisGame1 implements TennisGame {
         } else {
             score = temporaryScore();
         }
+        return score;
+    }
+
+    private String evenScore() {
+        String score;
+        switch (playerOneScore) {
+            case 0:
+                score = "Love-All";
+                break;
+            case 1:
+                score = "Fifteen-All";
+                break;
+            case 2:
+                score = "Thirty-All";
+                break;
+            default:
+                score = "Deuce";
+                break;
+
+        }
+
         return score;
     }
 
