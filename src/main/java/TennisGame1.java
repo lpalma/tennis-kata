@@ -31,11 +31,11 @@ public class TennisGame1 implements TennisGame {
         }
 
         if (playerOneHasAdvantage()) {
-            return ADVANTAGE_FOR + " " + playerOne;
+            return advantageFor(playerOne);
         }
 
         if (playerTwoHasAdvantage()) {
-            return ADVANTAGE_FOR + " " + playerTwo;
+            return advantageFor(playerTwo);
         }
 
         return finalScore();
@@ -49,6 +49,10 @@ public class TennisGame1 implements TennisGame {
         return playerOneScore >= Score.FORTY.value()
                 ? DEUCE
                 : Score.fromValue(playerOneScore) + "-" + ALL;
+    }
+
+    private String advantageFor(String player) {
+        return ADVANTAGE_FOR + " " + player;
     }
 
     private boolean isRunningScore() {
