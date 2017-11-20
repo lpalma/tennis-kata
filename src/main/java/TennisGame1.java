@@ -21,7 +21,7 @@ public class TennisGame1 implements TennisGame {
         }
 
         int playerOneAdvantage = playerOneScore - playerTwoScore;
-        
+
         if (playerOneAdvantage == 1) {
             return "Advantage player1";
         }
@@ -38,29 +38,20 @@ public class TennisGame1 implements TennisGame {
         if (playerOneAdvantage >= 2) {
             return "Win for player1";
         }
-
         return "Win for player2";
     }
 
     private String evenScore() {
-        String score;
         switch (playerOneScore) {
             case 0:
-                score = "Love-All";
-                break;
+                return "Love-All";
             case 1:
-                score = "Fifteen-All";
-                break;
+                return "Fifteen-All";
             case 2:
-                score = "Thirty-All";
-                break;
+                return "Thirty-All";
             default:
-                score = "Deuce";
-                break;
-
+                return "Deuce";
         }
-
-        return score;
     }
 
     private String temporaryScore() {
