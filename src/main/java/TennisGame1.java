@@ -8,26 +8,28 @@ import static java.util.stream.Stream.of;
 
 public class TennisGame1 implements TennisGame {
 
-    public static final String LOVE = "Love";
-    public static final String FIFTEEN = "Fifteen";
-    public static final String THIRTY = "Thirty";
-    public static final String FORTY = "Forty";
-    public static final String DEUCE = "Deuce";
-    public static final String ALL = "-All";
+    private int playerOneScore = 0;
+    private int playerTwoScore = 0;
+    private static final String LOVE = "Love";
+    private static final String FIFTEEN = "Fifteen";
+    private static final String THIRTY = "Thirty";
+    private static final String FORTY = "Forty";
+    private static final String DEUCE = "Deuce";
+    private static final String ALL = "-All";
+    private static final String PLAYER_ONE = "player1";
+    private static final String PLAYER_TWO = "player2";
+    private static final String ADVANTAGE_FOR = "Advantage ";
+    private static final String WIN_FOR = "Win for ";
 
     private Map<Integer, String> scores = unmodifiableMap(of(
             new SimpleEntry<>(0, LOVE),
             new SimpleEntry<>(1, FIFTEEN),
             new SimpleEntry<>(2, THIRTY),
             new SimpleEntry<>(3, FORTY)
-
     ).collect(toMap(Entry::getKey, Entry::getValue)));
 
-    private int playerOneScore = 0;
-    private int playerTwoScore = 0;
-
     public void wonPoint(String playerName) {
-        if (playerName.equals("player1"))
+        if (playerName.equals(PLAYER_ONE))
             playerOneScore += 1;
         else
             playerTwoScore += 1;
@@ -41,10 +43,10 @@ public class TennisGame1 implements TennisGame {
             return runningScore();
         }
         if (playerOneHasAdvantage()) {
-            return "Advantage player1";
+            return ADVANTAGE_FOR + PLAYER_ONE;
         }
         if (playerTwoHasAdvantage()) {
-            return "Advantage player2";
+            return ADVANTAGE_FOR + PLAYER_TWO;
         }
         return finalScore();
     }
@@ -75,14 +77,13 @@ public class TennisGame1 implements TennisGame {
         return getPlayerOneAdvantage() == -1;
     }
 
-    private String finalScore() {
-        if (getPlayerOneAdvantage() >= 2) {
-            return "Win for player1";
-        }
-        return "Win for player2";
-    }
-
     private int getPlayerOneAdvantage() {
         return playerOneScore - playerTwoScore;
+    }
+
+    private String finalScore() {
+        return getPlayerOneAdvantage() >= 2
+                ? WIN_FOR + PLAYER_ONE
+                : WIN_FOR + PLAYER_TWO;
     }
 }
