@@ -77,20 +77,21 @@ public class TennisGame1 implements TennisGame {
     }
 
     private boolean playerOneHasAdvantage() {
-        int playerOneAdvantage = playerOneScore - playerTwoScore;
-        return playerOneAdvantage == 1;
+        return getPlayerOneAdvantage() == 1;
     }
 
     private boolean playerTwoHasAdvantage() {
-        int playerOneAdvantage = playerOneScore - playerTwoScore;
-        return playerOneAdvantage == -1;
+        return getPlayerOneAdvantage() == -1;
     }
 
     private String finalScore() {
-        int playerOneAdvantage = playerOneScore - playerTwoScore;
-        if (playerOneAdvantage >= 2) {
+        if (getPlayerOneAdvantage() >= 2) {
             return "Win for player1";
         }
         return "Win for player2";
+    }
+
+    private int getPlayerOneAdvantage() {
+        return playerOneScore - playerTwoScore;
     }
 }
