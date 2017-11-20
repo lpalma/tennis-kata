@@ -12,22 +12,19 @@ public class TennisGame1 implements TennisGame {
     }
 
     public String getScore() {
-        String score;
         if (playerOneScore == playerTwoScore) {
-            score = evenScore();
+            return evenScore();
         } else if (playerOneScore >= 4 || playerTwoScore >= 4) {
             int playerOneAdvantage = playerOneScore - playerTwoScore;
             if (playerOneAdvantage == 1) {
-                score = "Advantage player1";
+                return "Advantage player1";
             } else if (playerOneAdvantage == -1) {
-                score = "Advantage player2";
+                return "Advantage player2";
             } else {
-                score = finalScore(playerOneAdvantage);
+                return finalScore(playerOneAdvantage);
             }
-        } else {
-            score = temporaryScore();
         }
-        return score;
+        return temporaryScore();
     }
 
     private String finalScore(int playerOneAdvantage) {
