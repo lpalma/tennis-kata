@@ -33,11 +33,11 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String finalScore(int playerOneAdvantage) {
-        String score;
         if (playerOneAdvantage >= 2) {
-            score = "Win for player1";
-        } else score = "Win for player2";
-        return score;
+            return "Win for player1";
+        }
+
+        return "Win for player2";
     }
 
     private String evenScore() {
