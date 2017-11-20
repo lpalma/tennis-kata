@@ -32,14 +32,18 @@ public class TennisGame1 implements TennisGame {
             }
         } else if (playerOneScore >= 4 || playerTwoScore >= 4) {
             int minusResult = playerOneScore - playerTwoScore;
-            if (minusResult == 1) score = "Advantage player1";
-            else if (minusResult == -1) score = "Advantage player2";
-            else if (minusResult >= 2) score = "Win for player1";
-            else score = "Win for player2";
+            if (minusResult == 1) {
+                score = "Advantage player1";
+            } else if (minusResult == -1) {
+                score = "Advantage player2";
+            } else if (minusResult >= 2) {
+                score = "Win for player1";
+            } else score = "Win for player2";
         } else {
             for (int i = 1; i < 3; i++) {
-                if (i == 1) tempScore = playerOneScore;
-                else {
+                if (i == 1) {
+                    tempScore = playerOneScore;
+                } else {
                     score += "-";
                     tempScore = playerTwoScore;
                 }
