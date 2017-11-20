@@ -14,16 +14,21 @@ public class TennisGame1 implements TennisGame {
     public String getScore() {
         if (playerOneScore == playerTwoScore) {
             return evenScore();
-        } else if (playerOneScore >= 4 || playerTwoScore >= 4) {
+        }
+
+        if (playerOneScore >= 4 || playerTwoScore >= 4) {
             int playerOneAdvantage = playerOneScore - playerTwoScore;
             if (playerOneAdvantage == 1) {
                 return "Advantage player1";
-            } else if (playerOneAdvantage == -1) {
-                return "Advantage player2";
-            } else {
-                return finalScore(playerOneAdvantage);
             }
+
+            if (playerOneAdvantage == -1) {
+                return "Advantage player2";
+            }
+
+            return finalScore(playerOneAdvantage);
         }
+
         return temporaryScore();
     }
 
