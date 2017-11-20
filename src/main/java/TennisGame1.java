@@ -16,20 +16,22 @@ public class TennisGame1 implements TennisGame {
             return evenScore();
         }
 
-        if (playerOneScore >= 4 || playerTwoScore >= 4) {
-            int playerOneAdvantage = playerOneScore - playerTwoScore;
-            if (playerOneAdvantage == 1) {
-                return "Advantage player1";
-            }
-
-            if (playerOneAdvantage == -1) {
-                return "Advantage player2";
-            }
-
-            return finalScore(playerOneAdvantage);
+        if (playerOneScore < 4 && playerTwoScore < 4) {
+            return temporaryScore();
         }
 
-        return temporaryScore();
+        int playerOneAdvantage = playerOneScore - playerTwoScore;
+        
+        if (playerOneAdvantage == 1) {
+            return "Advantage player1";
+        }
+
+        if (playerOneAdvantage == -1) {
+            return "Advantage player2";
+        }
+
+        return finalScore(playerOneAdvantage);
+
     }
 
     private String finalScore(int playerOneAdvantage) {
