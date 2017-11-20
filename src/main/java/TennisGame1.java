@@ -12,6 +12,8 @@ public class TennisGame1 implements TennisGame {
     public static final String FIFTEEN = "Fifteen";
     public static final String THIRTY = "Thirty";
     public static final String FORTY = "Forty";
+    public static final String DEUCE = "Deuce";
+    public static final String ALL = "-All";
 
     private Map<Integer, String> scores = unmodifiableMap(of(
             new SimpleEntry<>(0, LOVE),
@@ -52,16 +54,9 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String evenScore() {
-        switch (playerOneScore) {
-            case 0:
-                return "Love-All";
-            case 1:
-                return "Fifteen-All";
-            case 2:
-                return "Thirty-All";
-            default:
-                return "Deuce";
-        }
+        return playerOneScore >= 3
+                ? DEUCE
+                : scores.get(playerOneScore) + ALL;
     }
 
     private boolean isRunningScore() {
