@@ -49,31 +49,20 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String runningScore() {
-        String score = "";
-        int tempScore;
-        for (int i = 1; i < 3; i++) {
-            if (i == 1) {
-                tempScore = playerOneScore;
-            } else {
-                score += "-";
-                tempScore = playerTwoScore;
-            }
-            switch (tempScore) {
-                case 0:
-                    score += "Love";
-                    break;
-                case 1:
-                    score += "Fifteen";
-                    break;
-                case 2:
-                    score += "Thirty";
-                    break;
-                case 3:
-                    score += "Forty";
-                    break;
-            }
+        return getPlayerScore(playerOneScore) + "-" + getPlayerScore(playerTwoScore);
+    }
+
+    private String getPlayerScore(int playerScore) {
+        switch (playerScore) {
+            case 0:
+                return "Love";
+            case 1:
+                return "Fifteen";
+            case 2:
+                return "Thirty";
+            default:
+                return "Forty";
         }
-        return score;
     }
 
     private boolean playerOneHasAdvantage() {
