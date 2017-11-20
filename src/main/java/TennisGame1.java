@@ -1,5 +1,25 @@
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import static java.util.Collections.unmodifiableMap;
+import static java.util.stream.Collectors.toMap;
+import static java.util.stream.Stream.of;
 
 public class TennisGame1 implements TennisGame {
+
+    public static final String LOVE = "Love";
+    public static final String FIFTEEN = "Fifteen";
+    public static final String THIRTY = "Thirty";
+    public static final String FORTY = "Forty";
+
+    private Map<Integer, String> scores = unmodifiableMap(of(
+            new SimpleEntry<>(0, LOVE),
+            new SimpleEntry<>(1, FIFTEEN),
+            new SimpleEntry<>(2, THIRTY),
+            new SimpleEntry<>(3, FORTY)
+
+    ).collect(toMap(Entry::getKey, Entry::getValue)));
 
     private int playerOneScore = 0;
     private int playerTwoScore = 0;
@@ -49,20 +69,7 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String runningScore() {
-        return getPlayerScore(playerOneScore) + "-" + getPlayerScore(playerTwoScore);
-    }
-
-    private String getPlayerScore(int playerScore) {
-        switch (playerScore) {
-            case 0:
-                return "Love";
-            case 1:
-                return "Fifteen";
-            case 2:
-                return "Thirty";
-            default:
-                return "Forty";
-        }
+        return scores.get(playerOneScore) + "-" + scores.get(playerTwoScore);
     }
 
     private boolean playerOneHasAdvantage() {
