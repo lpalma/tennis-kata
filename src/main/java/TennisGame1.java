@@ -15,11 +15,11 @@ public class TennisGame1 implements TennisGame {
     private static final String THIRTY = "Thirty";
     private static final String FORTY = "Forty";
     private static final String DEUCE = "Deuce";
-    private static final String ALL = "-All";
+    private static final String ALL = "All";
     private static final String PLAYER_ONE = "player1";
     private static final String PLAYER_TWO = "player2";
-    private static final String ADVANTAGE_FOR = "Advantage ";
-    private static final String WIN_FOR = "Win for ";
+    private static final String ADVANTAGE_FOR = "Advantage";
+    private static final String WIN_FOR = "Win for";
 
     private Map<Integer, String> scores = unmodifiableMap(of(
             new SimpleEntry<>(0, LOVE),
@@ -29,9 +29,9 @@ public class TennisGame1 implements TennisGame {
     ).collect(toMap(Entry::getKey, Entry::getValue)));
 
     public void wonPoint(String playerName) {
-        if (playerName.equals(PLAYER_ONE))
+        if (playerName.equals(PLAYER_ONE)) {
             playerOneScore += 1;
-        else
+        } else
             playerTwoScore += 1;
     }
 
@@ -43,10 +43,10 @@ public class TennisGame1 implements TennisGame {
             return runningScore();
         }
         if (playerOneHasAdvantage()) {
-            return ADVANTAGE_FOR + PLAYER_ONE;
+            return ADVANTAGE_FOR + " " + PLAYER_ONE;
         }
         if (playerTwoHasAdvantage()) {
-            return ADVANTAGE_FOR + PLAYER_TWO;
+            return ADVANTAGE_FOR + " " + PLAYER_TWO;
         }
         return finalScore();
     }
@@ -58,7 +58,7 @@ public class TennisGame1 implements TennisGame {
     private String evenScore() {
         return playerOneScore >= 3
                 ? DEUCE
-                : scores.get(playerOneScore) + ALL;
+                : scores.get(playerOneScore) + "-" + ALL;
     }
 
     private boolean isRunningScore() {
@@ -83,7 +83,7 @@ public class TennisGame1 implements TennisGame {
 
     private String finalScore() {
         return getPlayerOneAdvantage() >= 2
-                ? WIN_FOR + PLAYER_ONE
-                : WIN_FOR + PLAYER_TWO;
+                ? WIN_FOR + " " + PLAYER_ONE
+                : WIN_FOR + " " + PLAYER_TWO;
     }
 }
