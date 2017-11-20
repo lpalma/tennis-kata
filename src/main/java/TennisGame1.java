@@ -1,16 +1,21 @@
 public class TennisGame1 implements TennisGame {
 
+    private final String playerOne;
+    private final String playerTwo;
     private int playerOneScore = 0;
     private int playerTwoScore = 0;
     private static final String DEUCE = "Deuce";
     private static final String ALL = "All";
-    private static final String PLAYER_ONE = "player1";
-    private static final String PLAYER_TWO = "player2";
     private static final String ADVANTAGE_FOR = "Advantage";
     private static final String WIN_FOR = "Win for";
 
+    public TennisGame1(String playerOne, String playerTwo) {
+        this.playerOne = playerOne;
+        this.playerTwo = playerTwo;
+    }
+
     public void wonPoint(String playerName) {
-        if (playerName.equals(PLAYER_ONE)) {
+        if (playerName.equals(playerOne)) {
             playerOneScore += 1;
         } else
             playerTwoScore += 1;
@@ -26,11 +31,11 @@ public class TennisGame1 implements TennisGame {
         }
 
         if (playerOneHasAdvantage()) {
-            return ADVANTAGE_FOR + " " + PLAYER_ONE;
+            return ADVANTAGE_FOR + " " + playerOne;
         }
 
         if (playerTwoHasAdvantage()) {
-            return ADVANTAGE_FOR + " " + PLAYER_TWO;
+            return ADVANTAGE_FOR + " " + playerTwo;
         }
 
         return finalScore();
@@ -72,7 +77,7 @@ public class TennisGame1 implements TennisGame {
 
     private String finalScore() {
         return getPlayerOneAdvantage() >= Score.THIRTY.value()
-                ? WIN_FOR + " " + PLAYER_ONE
-                : WIN_FOR + " " + PLAYER_TWO;
+                ? WIN_FOR + " " + playerOne
+                : WIN_FOR + " " + playerTwo;
     }
 }
