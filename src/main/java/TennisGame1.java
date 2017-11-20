@@ -5,19 +5,18 @@ public class TennisGame1 implements TennisGame {
     private int playerTwoScore = 0;
 
     public void wonPoint(String playerName) {
-        if (playerName == "player1")
+        if (playerName.equals("player1"))
             playerOneScore += 1;
         else
             playerTwoScore += 1;
     }
 
     public String getScore() {
-        if (playerOneScore == playerTwoScore) {
+        if (isEvenScore()) {
             return evenScore();
         }
-
-        if (playerOneScore < 4 && playerTwoScore < 4) {
-            return temporaryScore();
+        if (isRunningScore()) {
+            return runningScore();
         }
 
         int playerOneAdvantage = playerOneScore - playerTwoScore;
@@ -25,13 +24,18 @@ public class TennisGame1 implements TennisGame {
         if (playerOneAdvantage == 1) {
             return "Advantage player1";
         }
-
         if (playerOneAdvantage == -1) {
             return "Advantage player2";
         }
-
         return finalScore(playerOneAdvantage);
+    }
 
+    private boolean isRunningScore() {
+        return playerOneScore < 4 && playerTwoScore < 4;
+    }
+
+    private boolean isEvenScore() {
+        return playerOneScore == playerTwoScore;
     }
 
     private String finalScore(int playerOneAdvantage) {
@@ -54,7 +58,7 @@ public class TennisGame1 implements TennisGame {
         }
     }
 
-    private String temporaryScore() {
+    private String runningScore() {
         String score = "";
         int tempScore;
         for (int i = 1; i < 3; i++) {
