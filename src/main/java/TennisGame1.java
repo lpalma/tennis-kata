@@ -18,31 +18,17 @@ public class TennisGame1 implements TennisGame {
         if (isRunningScore()) {
             return runningScore();
         }
-
-        int playerOneAdvantage = playerOneScore - playerTwoScore;
-
-        if (playerOneAdvantage == 1) {
+        if (playerOneHasAdvantage()) {
             return "Advantage player1";
         }
-        if (playerOneAdvantage == -1) {
+        if (playerTwoHasAdvantage()) {
             return "Advantage player2";
         }
-        return finalScore(playerOneAdvantage);
-    }
-
-    private boolean isRunningScore() {
-        return playerOneScore < 4 && playerTwoScore < 4;
+        return finalScore();
     }
 
     private boolean isEvenScore() {
         return playerOneScore == playerTwoScore;
-    }
-
-    private String finalScore(int playerOneAdvantage) {
-        if (playerOneAdvantage >= 2) {
-            return "Win for player1";
-        }
-        return "Win for player2";
     }
 
     private String evenScore() {
@@ -56,6 +42,10 @@ public class TennisGame1 implements TennisGame {
             default:
                 return "Deuce";
         }
+    }
+
+    private boolean isRunningScore() {
+        return playerOneScore < 4 && playerTwoScore < 4;
     }
 
     private String runningScore() {
@@ -84,5 +74,23 @@ public class TennisGame1 implements TennisGame {
             }
         }
         return score;
+    }
+
+    private boolean playerOneHasAdvantage() {
+        int playerOneAdvantage = playerOneScore - playerTwoScore;
+        return playerOneAdvantage == 1;
+    }
+
+    private boolean playerTwoHasAdvantage() {
+        int playerOneAdvantage = playerOneScore - playerTwoScore;
+        return playerOneAdvantage == -1;
+    }
+
+    private String finalScore() {
+        int playerOneAdvantage = playerOneScore - playerTwoScore;
+        if (playerOneAdvantage >= 2) {
+            return "Win for player1";
+        }
+        return "Win for player2";
     }
 }
