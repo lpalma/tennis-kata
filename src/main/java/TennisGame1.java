@@ -21,12 +21,20 @@ public class TennisGame1 implements TennisGame {
                 score = "Advantage player1";
             } else if (playerOneAdvantage == -1) {
                 score = "Advantage player2";
-            } else if (playerOneAdvantage >= 2) {
-                score = "Win for player1";
-            } else score = "Win for player2";
+            } else {
+                score = finalScore(playerOneAdvantage);
+            }
         } else {
             score = temporaryScore();
         }
+        return score;
+    }
+
+    private String finalScore(int playerOneAdvantage) {
+        String score;
+        if (playerOneAdvantage >= 2) {
+            score = "Win for player1";
+        } else score = "Win for player2";
         return score;
     }
 
